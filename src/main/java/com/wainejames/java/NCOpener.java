@@ -13,17 +13,21 @@ public class NCOpener {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (ncFile != null){
-                try {
-                    ncFile.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            close();
         }
     }
 
     public NetcdfFile getData() {
         return ncFile;
+    }
+
+    public void close() {
+        if (ncFile != null){
+            try {
+                ncFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
